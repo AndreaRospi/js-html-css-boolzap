@@ -94,11 +94,23 @@ const app = new Vue({
             this.currentContact = i;
         },
         addMessage: function () {
-            const messageObj = {
-                date: '10/01/2020 15:50:00',
-                message: this.inputMessage,
-                status: 'sent'
-            };
+            if (this.inputMessage != " ") {
+                this.contacts[this.currentContact].messages.push({
+                    date: '10/01/2020 15:50:00',
+                    message: this.inputMessage,
+                    status: 'sent'
+                }),
+                    this.inputMessage = ''
+            }
+            setTimeout(function () {
+                this.contacts[this.currentContact].messages.push({
+                    date: '10/01/2020 15:50:00',
+                    message: 'ok',
+                    status: 'received'
+                }),
+
+            }, 1000),
+
         }
 
     }
