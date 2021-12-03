@@ -93,23 +93,26 @@ const app = new Vue({
         changeContact: function (i) {
             this.currentContact = i;
         },
-        addMessage: function () {
+        addMessage: function (contatto) {
             if (this.inputMessage != " ") {
                 this.contacts[this.currentContact].messages.push({
-                    date: '10/01/2020 15:50:00',
+                    date: '10/01/2020 15:30:55',
                     message: this.inputMessage,
                     status: 'sent'
-                }),
-                    this.inputMessage = ''
+                })
             }
-            setTimeout(function () {
-                this.contacts[this.currentContact].messages.push({
-                    date: '10/01/2020 15:50:00',
-                    message: 'ok',
-                    status: 'received'
-                }),
+            this.inputMessage = '';
+            setTimeout(() => {
+                this.risposta(contatto)
+            }, 1000);
+        },
+        risposta: function (contatto) {
 
-            }, 1000),
+            this.contacts[contatto].messages.push({
+                date: '10/01/2020 15:30:55',
+                message: 'ok',
+                status: 'received'
+            })
 
         }
 

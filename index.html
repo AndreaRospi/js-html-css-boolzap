@@ -85,7 +85,7 @@
                     <i class="far fa-smile"></i>
                 </div>
                 <div class="message-field">
-                    <input type="text" v-model="inputMessage" @keyup.enter="addMessage"
+                    <input type="text" v-model="inputMessage" @keyup.enter="addMessage(currentContact)"
                         placeholder="Scrivi un messaggio">
                 </div>
                 <div class="icon-right">
