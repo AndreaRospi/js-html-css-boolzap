@@ -45,12 +45,13 @@
 
             </div>
             <div class="search-bar">
-                <input type="text" placeholder="Cerca o inizia una nuova chat">
+                <input type="text" v-model="cercaContatto" @keyup="ricerca()"
+                    placeholder="Cerca o inizia una nuova chat">
             </div>
             <div class="contacts">
                 <ul>
-                    <li class="contact" v-for="(contact, index) in contacts" @click="changeContact(index)"
-                        :class="index == currentContact ? 'active' : null">
+                    <li class="contact" v-if="contact.visible" v-for="(contact, index) in contacts"
+                        @click="changeContact(index)" :class="index == currentContact ? 'active' : null">
                         <img class="avatar-img" :src="`./img/avatar${contact.avatar}.jpg`" :alt="contact.name">
                         <span class="contact-name">{{contact.name}}</span>
                     </li>
@@ -68,8 +69,6 @@
                     <i class="fas fa-search"></i>
                     <i class="fas fa-paperclip distance"></i>
                     <i class="fas fa-ellipsis-v"></i>
-
-
                 </div>
             </div>
             <div class="messages-container">
@@ -89,11 +88,9 @@
                         placeholder="Scrivi un messaggio">
                 </div>
                 <div class="icon-right">
-                    <i class="fas fa-microphone"></i>
+                    <i class="fas fa-microphone" v-if="inputMessage == ''"></i>
+                    <i class="far fa-paper-plane" v-else="" @click="addMessage(currentContact)"></i>
                 </div>
-
-
-
             </div>
         </div>
     </div>

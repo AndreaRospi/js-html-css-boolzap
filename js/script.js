@@ -88,6 +88,7 @@ const app = new Vue({
         },
         currentContact: 0,
         inputMessage: '',
+        cercaContatto: ''
     },
     methods: {
         changeContact: function (i) {
@@ -114,7 +115,19 @@ const app = new Vue({
                 status: 'received'
             })
 
+        },
+        ricerca: function () {
+            for (let i = 0; i < this.contacts.length; i++) {
+                let minCon = this.contacts[i].name.toLowerCase();
+                let minConCercato = this.cercaContatto.toLowerCase();
+                if (minCon.includes(minConCercato)) {
+                    this.contacts[i].visible = true;
+                } else {
+                    this.contacts[i].visible = false;
+                }
+            }
         }
+
 
     }
 });
